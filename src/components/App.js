@@ -22,7 +22,8 @@ state = {
  
   
   addContact = (name, number) => {
-    const existPerson = this.state.contacts.find(person => person.name===name)
+    const existPerson = this.state.contacts.find(person =>
+      person.name.toLowerCase() === name.toLowerCase())
     if (existPerson) {  
     return alert(`${existPerson.name } is already in contact`)
   }
@@ -31,7 +32,10 @@ state = {
 }),  )
   }
 
-
+  reset = () => {
+    this.setState({name:"", number:""}) 
+  }
+  
   onFindContact = (event) => {
     const filter = event.target.value;
     this.setState({ filter: filter.toLowerCase() });
@@ -56,10 +60,10 @@ state = {
   return (
     <>
      <h1> Phonebook</h1>
-      <ContactForm onSubmit={ addContact} reset={reset} />
+      <ContactForm onSubmit={ addContact} onReset={reset} />
       <h2> Contacts </h2>
       <Filter search={filter} onFindContact={onFindContact} />  
-      <ContactsList items = {resultFind} onDelete={deleteContact} />
+      <ContactsList items = {resultFind} onDelete={deleteContact}   />
     </>
     );
 }

@@ -2,7 +2,7 @@ import css from "./Form.module.css"
   import PropTypes from 'prop-types';
 
 
-export const ContactForm = ({ onSubmit}) => {
+export const ContactForm = ({ onSubmit, onReset}) => {
 const hendleSubmit = (event) => {
   event.preventDefault();
    const { name, number} =event.target.elements
@@ -10,9 +10,12 @@ const hendleSubmit = (event) => {
           name.value,
           number.value,
           name.value="",
-          number.value=""
-  )       
+          number.value=""  
+  )   
+  onReset()
   }
+
+
     return (
         <form className={css.form} onSubmit={hendleSubmit} > 
       <label> Name</label>
@@ -37,4 +40,5 @@ const hendleSubmit = (event) => {
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
 };
