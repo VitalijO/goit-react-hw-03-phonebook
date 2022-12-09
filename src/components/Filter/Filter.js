@@ -15,5 +15,5 @@ export const Filter = ({ onFindContact, filter }) => {
 
 Filter.propTypes = {
   onFindContact: PropTypes.func.isRequired,
-  filter: PropTypes.string
+  filter: PropTypes.string.isRequired,
 };
