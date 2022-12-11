@@ -20,14 +20,14 @@ state = {
   }
   
   componentDidMount() {
-    const contactsInStorage = localStorage.getItem('contacts')
-    
-    if (!contactsInStorage) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    }
-    const parsedContacts = JSON.parse(contactsInStorage)
-    this.setState({contacts: parsedContacts})  
-  }
+    if (localStorage.getItem('contacts')) {
+       const contactsInStorage = localStorage.getItem('contacts')
+       const parsedContacts = JSON.parse(contactsInStorage)
+       this.setState({contacts: parsedContacts}) 
+}
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+}
+
 
   addContact = (name, number) => {
     const existPerson = this.state.contacts.find(person =>
