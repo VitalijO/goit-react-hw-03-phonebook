@@ -20,12 +20,11 @@ state = {
   }
   
   componentDidMount() {
-    if (localStorage.getItem('contacts')) {
-       const contactsInStorage = localStorage.getItem('contacts')
-       const parsedContacts = JSON.parse(contactsInStorage)
-       this.setState({contacts: parsedContacts}) 
+ const contactsInStorage = localStorage.getItem('contacts')
+ const parsedContacts = JSON.parse(contactsInStorage)
+    if (parsedContacts) {
+     this.setState({contacts: parsedContacts}) 
 }
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
 }
 
 
